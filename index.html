@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Stop Watch</title>
+</head>
+<body>
+    <section>
+        <h1>Stop Watch</h1>
+        <h2>Vanilla Javascript Stop Watch</h2>
+        <div class="timer"><span class="minutes">00</span>:<span class="seconds">00</span>.<span class="tens">00</span></div>
+        <div class="controls">
+            <button class="btn btn--start">Start</button>
+            <button class="btn btn--stop">Stop</button>
+            <button class="btn btn--reset">Reset</button>
+        </div>
+    </section>
+
+
+
+<script>
+    let interval;
+    const minutesSpan = document.querySelector('.minutes');
+    const secondsSpan = document.querySelector('.seconds');
+    const tensSpan = document.querySelector('.tens');
+    const startButton = document.querySelector('.btn--start');
+    const stopButton = document.querySelector('.btn--stop');
+    const resetButton = document.querySelector('.btn--reset');
+
+
+    const updateTime = () => {
+        let mins = Number.parseInt(minutesSpan.textContent);
+        let secs = Number.parseInt(secondsSpan.textContent);
+        let tens = Number.parseInt(tensSpan.textContent) + 1;
+
+        if (tens === 100) {
+            tens = '00';
+            secs += 1;
+        } else if (tens < 10) {
+            tens = `0${tens}`
+        }
+
+        if(secs === 60){
+            secs = '00';
+            mins += 1
+        } else if (secs < 10) {
+            secs = `0${secs}`
+        }
+
+        if(mins < 10){
+            mins = `0${mins}`
+        }
+
+        tensSpan.textContent = tens;
+        secondsSpan.textContent = secs;
+        minutesSpan.textContent = mins;
+        
+    }
+
+
+    startButton.addEventListener('click', ()=> {
+        interval = setInterval(updateTime,10)
+    });
+    
+    stopButton.addEventListener('click', () => {
+        clearInterval(interval);
+    });
+
+    resetButton.addEventListener('click', () => {
+        clearInterval(interval);
+        minutesSpan.textContent = '00';
+        secondsSpan.textContent = '00';
+        tensSpan.textContent = '00';
+    })
+
+</script>
+</body>
+</html>
