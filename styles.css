@@ -23,12 +23,12 @@ section {
 }
 
 h1, h2, .timer {
-    font-size: 5rem;
+    font-size: 3rem;
     margin-bottom: 2rem;
 }
 
 h1, h2 {
-    margin-bottom: 2rem;
+    margin-bottom: 1.6rem;
 }
 
 .controls {
@@ -43,7 +43,7 @@ h1, h2 {
     font-size: 1.8rem;
     background-color: #fea600;
     border: 1px solid #fff;
-    padding: 1.6rem 5rem;
+    padding: 1rem 3rem;
     transition: all .4s;
     border-radius: .6rem;
 }
@@ -52,4 +52,16 @@ h1, h2 {
     color: #fea600;
     background-color: #fff;
     cursor: pointer;
+}
+
+@media (min-width: 820px) {
+    h1, h2, .timer {
+        font-size: 5rem;
+    }
+
+    .btn {
+        font-size: 3rem;
+        padding: 2rem 6rem;
+    }
+
 }
